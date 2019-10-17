@@ -18,6 +18,7 @@ namespace WebhookCatcher
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -41,7 +42,9 @@ namespace WebhookCatcher
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+
+            //app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

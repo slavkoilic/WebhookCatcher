@@ -1,0 +1,27 @@
+Headers
+[Accept, */*]
+[Accept-Encoding, gzip, deflate]
+[Cache-Control, no-cache]
+[Connection, keep-alive]
+[Content-Length, 470]
+[Content-Type, application/json]
+[Host, localhost:48339]
+[User-Agent, PostmanRuntime/7.18.0]
+[Postman-Token, b4239471-24cf-404c-8ee0-dccc7e79fde3]
+
+Body
+{
+      "id": "evt_e4d82bd1f4c2425789509d",
+      "type": "customer.created",
+      "resourceName": "Customer",
+      "resource": {
+            "id": "cus_3ece929a2a8740b7a",
+            "mode": "Live",
+            "firstName": "Slavko",
+            "lastName": "Ilic",
+            "email": "slavko@wolf-wolf.net",
+            "country": "DE",
+            "created": "2019-10-17T11:25:48.8513256Z"
+      },
+      "created": "2019-10-17T11:25:48.9153217Z"
+}

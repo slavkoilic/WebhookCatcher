@@ -4,4 +4,7 @@
     <StartAction>Project</StartAction>
     <ApplicationURL>http://localhost:5001</ApplicationURL>
   </PropertyGroup>
+  <PropertyGroup>
+    <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
+  </PropertyGroup>
 </Project>

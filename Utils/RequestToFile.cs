@@ -9,7 +9,7 @@ namespace WebhookCatcher.Utils
         {
             string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 
-            File.WriteAllText("./Logs/"+timestamp+"_"+ responseCode+".txt", requestContent);
+            File.WriteAllText("./wwwroot/Logs/" + timestamp+"_"+ responseCode+".txt", requestContent);
         }
     }
 }
