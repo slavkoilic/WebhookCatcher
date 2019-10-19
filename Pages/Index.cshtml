@@ -4,26 +4,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Webhook Catcher</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-
-        .content {
-            margin: auto;
-        }
-    </style>
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
 
 </head>
 
 
 
 <body>
-    <div class="content">
-    <h2>It's @Model.Time right now on the server!</h2>
-        
-        @Html.Raw(@Model.Logs)
-    </div>
-   
+    <div>
+        <div>
+            <div class="server-time">
+                <h2>Last refresh: @Model.Time (Server Time) <button type="submit" onClick="window.location.reload();">Refresh Page</button></h2>
+            </div>
+        </div>
+            <div>
+                <div class="logs-number">
+                    <h2>Current number of files: @Model.LogsNumber</h2>
+                </div>
+            </div>
+            <div>
+                @Html.Raw(@Model.Logs)
+            </div>
+
 </body>
 </html>
 

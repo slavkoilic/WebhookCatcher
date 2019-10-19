@@ -10,10 +10,12 @@ namespace WebhookCatcher.Pages
 
         public string Time { get; set; }
         public string Logs { get; set; }
+        public string LogsNumber { get; set; }
         public void OnGet()
         {
             Time = DateTime.Now.ToShortTimeString();
             Logs = logs.ListAllFiles();
+            LogsNumber = logs.NumberOfFiles();
         }
     }
 }
