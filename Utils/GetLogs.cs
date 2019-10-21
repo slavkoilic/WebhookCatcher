@@ -34,9 +34,12 @@ namespace WebhookCatcher.Utils
 
             foreach (FileInfo f in orderedFiles)
             {
+                var file = System.IO.Path.GetFileNameWithoutExtension(f.Name);
+                string[] parts = file.Split('_');
+
                 sb.Append("<tr>");
                 sb.Append("<td>" + f.CreationTime.ToString("yyyyMMdd_HHmmssfff") + "</td>");
-                sb.Append("<td>200</td>");
+                sb.Append("<td>"+ parts.Last() +"</td>");
                 sb.Append("<td><a href=\"/Logs/"+ f.Name + "\" target=\"_blank\"> ");
                 sb.Append(f.Name + "</a></td>");
                 sb.Append("</tr>");
@@ -51,5 +54,7 @@ namespace WebhookCatcher.Utils
             var numberOfFiles = Files().Count().ToString();
             return numberOfFiles;
         }
+
+      
     }
 }
