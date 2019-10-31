@@ -8,14 +8,16 @@ namespace WebhookCatcher.Utils
 {
     public class GetLogs
     {
+        string pathToLogsDir = Directory.GetCurrentDirectory() + "/wwwroot/Logs";
+        string pathToArchiveDir = Directory.GetCurrentDirectory() + "/wwwroot/Archive";
+        
+
         public IEnumerable<FileInfo> Files()
         {
-            DirectoryInfo dir;
-            FileInfo[] files;
-            string pathToLogsDir = Directory.GetCurrentDirectory() + "/wwwroot/Logs";
-            dir = new DirectoryInfo(pathToLogsDir);
-            files = dir.GetFiles();
-            var orderedFiles = files.OrderBy(f => f.CreationTime).Reverse<FileInfo>();
+
+            DirectoryInfo LogsDir = new DirectoryInfo(pathToLogsDir);
+            FileInfo[] LogFiles = LogsDir.GetFiles();
+            var orderedFiles = LogFiles.OrderBy(f => f.CreationTime).Reverse<FileInfo>();
 
             return orderedFiles;
         }
@@ -55,6 +57,15 @@ namespace WebhookCatcher.Utils
             return numberOfFiles;
         }
 
+        public void ArchiveLogs()
+        {
+            DirectoryInfo LogsDir = new DirectoryInfo(pathToLogsDir);
+            foreach (var file in LogsDir.GetFiles())
+            {
+                file.MoveTo($@"{pathToArchiveDir}\{file.Name}");
+            }
+
+        }
       
     }
 }

@@ -19,12 +19,12 @@
     <div>
         <div>
             <div class="server-time">
-                <h2>Last refresh: @Model.Time (Server Time) <button type="submit" onClick="window.location.reload();">Refresh Page</button></h2>
+                <h2>Last refresh: @Model.Time (Server Time) <button type="submit" onClick="window.location.reload();">Refresh Page</button> </h2>
             </div>
         </div>
             <div>
                 <div class="logs-number">
-                    <h2>Current number of files: @Model.LogsNumber</h2>
+                    <h2>Current number of files: @Model.LogsNumber <form method="post"><button asp-page-handler="ArchiveLogs">Archive Logs</button></form></h2>
                 </div>
             </div>
             <div>

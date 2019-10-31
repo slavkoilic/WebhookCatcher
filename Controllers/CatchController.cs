@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
 using WebhookCatcher.Utils;
 
 namespace WebhookCatcher.Controllers
@@ -16,60 +17,53 @@ namespace WebhookCatcher.Controllers
         RequestToFile request = new RequestToFile();
 
 
-        [HttpPost("{id}")]
-        public IActionResult PostToCode(int id)
+        [HttpPost("{code}")]
+        public IActionResult PostToCode(int code)
         {
             try
             {
                 var headerDictionary = new Dictionary<string, StringValues>(Request.Headers);                
 
-                string csv = "Headers" + Environment.NewLine;
+                string csv = "{" + Environment.NewLine + "\"Headers\" : ";
 
-                foreach (var pair in headerDictionary)
-                {
-                    csv += pair + Environment.NewLine;
-                }
-
+                csv += JsonConvert.SerializeObject(headerDictionary, Formatting.Indented) + "," + Environment.NewLine;
+                
                 StreamReader reader = new StreamReader(Request.Body);
                 string body = reader.ReadToEnd();
 
-                body = Environment.NewLine + "Body" + Environment.NewLine + body;
+                body = "\"Body\" : " + body + Environment.NewLine + "}";
 
                 string response = csv + body;
 
-                request.ToFile(response, id);
+                request.ToFile(response, code);
 
-                return StatusCode(id, response);
+                return StatusCode(code, response);
             }
             catch (Exception e)
             {
-                request.ToFile(e.Message, id);
-                return StatusCode(id, e.Message);
+                request.ToFile(e.Message, code);
+                return StatusCode(code, e.Message);
             }
         }
 
 
-        [HttpGet("{id}")]
-        public IActionResult GetCode(int id)
+        [HttpGet("{code}")]
+        public IActionResult GetCode(int code)
         {
             var headerDictionary = new Dictionary<string, StringValues>(Request.Headers);
 
-            string csv = "Headers" + Environment.NewLine;
+            string csv = "{" + Environment.NewLine + "\"Headers\" : ";
 
-            foreach (var pair in headerDictionary)
-            {
-                csv += pair + Environment.NewLine;
-            }
-
+            csv += JsonConvert.SerializeObject(headerDictionary, Formatting.Indented) + "," + Environment.NewLine;
 
             StreamReader reader = new StreamReader(Request.Body);
             string body = reader.ReadToEnd();
 
-            body = Environment.NewLine + "Body" + Environment.NewLine + body;
+            body = "\"Body\" : " + body + Environment.NewLine + "}";
 
             string response = csv + body;
 
-            return StatusCode(id, response);
+            return StatusCode(code, response);
 
         }
 
