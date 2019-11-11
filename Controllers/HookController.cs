@@ -18,7 +18,11 @@ namespace WebhookCatcher.Controllers
         RequestToFile request = new RequestToFile();
         HookModel hookModel = new HookModel();
         HttpClient client = new HttpClient();
-        
+        //private string WebhookUrl = "";
+        //private string WebhookBody = "";
+
+
+
 
         [HttpPost]
         public IActionResult PostHook()

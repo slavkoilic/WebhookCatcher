@@ -24,4 +24,3 @@ D:\Everything\Development\Code\WebHookCatcher\obj\Release\netcoreapp2.2\WebhookC
 D:\Everything\Development\Code\WebHookCatcher\obj\Release\netcoreapp2.2\WebhookCatcher.dll
 D:\Everything\Development\Code\WebHookCatcher\obj\Release\netcoreapp2.2\WebhookCatcher.pdb
 D:\Everything\Development\Code\WebHookCatcher\obj\Release\netcoreapp2.2\WebhookCatcher.csproj.CopyComplete
-D:\Everything\Development\Code\WebHookCatcher\obj\Release\netcoreapp2.2\WebhookCatcher.csprojAssemblyReference.cache

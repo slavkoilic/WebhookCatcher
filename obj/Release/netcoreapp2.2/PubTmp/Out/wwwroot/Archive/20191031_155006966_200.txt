@@ -1,0 +1,29 @@
+{
+"Headers" : {
+  "Accept": [
+    "application/json, text/json, text/x-json, text/javascript, application/xml, text/xml"
+  ],
+  "Accept-Encoding": [
+    "gzip, deflate"
+  ],
+  "Connection": [
+    "Keep-Alive"
+  ],
+  "Content-Length": [
+    "69"
+  ],
+  "Content-Type": [
+    "application/json"
+  ],
+  "Host": [
+    "localhost:48339"
+  ],
+  "User-Agent": [
+    "RestSharp/106.6.10.0"
+  ]
+},
+"Body" : {"PaymentOption":"HPL",
+      	"Status":"Accepted"
+      	
+      }
+}
