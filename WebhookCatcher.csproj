@@ -16,6 +16,7 @@
     <Folder Include="Pages\" />
     <Folder Include="wwwroot\Logs\" />
     <Folder Include="wwwroot\ControllerStatus\" />
+    <Folder Include="wwwroot\Controllers\" />
   </ItemGroup>
 
   <ItemGroup>
