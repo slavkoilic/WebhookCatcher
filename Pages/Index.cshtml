@@ -13,18 +13,26 @@
 
 </head>
 
-
-
 <body>
+    <header>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" asp-page="/Index">Logs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-page="/Controllers">Controllers</a>
+            </li>
+        </ul>
+    </header>
     <div>
         <div>
             <div class="server-time">
-                <h2>Last refresh: @Model.Time (Server Time) <button type="submit" onClick="window.location.reload();">Refresh Page</button> </h2>
+                <h3>Last refresh: @Model.Time (Server Time) <button type="submit" onClick="window.location.reload();">Refresh Page</button> </h3>
             </div>
         </div>
             <div>
                 <div class="logs-number">
-                    <h2>Current number of files: @Model.LogsNumber <form method="post"><button asp-page-handler="ArchiveLogs">Archive Logs</button></form></h2>
+                    <h3>Current number of log files: @Model.LogsNumber <form method="post"><button asp-page-handler="ArchiveLogs">Archive Logs</button></form></h3>
                 </div>
             </div>
             <div>

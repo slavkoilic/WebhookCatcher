@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
@@ -18,11 +19,11 @@ namespace WebhookCatcher.Controllers
 
 
         [HttpGet]
-        public IActionResult GetEcho()
+        public async Task<IActionResult> GetEchoAsync()
         {          
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();            
+            string body = await reader.ReadToEndAsync();            
 
             string response =body;
 
@@ -31,11 +32,11 @@ namespace WebhookCatcher.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostEcho()
+        public async Task<IActionResult> PostEchoAsync()
         {
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
 
             string response = body;
 
@@ -45,11 +46,11 @@ namespace WebhookCatcher.Controllers
 
 
         [HttpGet("{code}")]
-        public IActionResult GetEchoWithCode(int code)
+        public async Task<IActionResult> GetEchoWithCodeAsync(int code)
         {
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
 
             string response = body;
 
@@ -58,11 +59,11 @@ namespace WebhookCatcher.Controllers
         }
 
         [HttpPost("{code}")]
-        public IActionResult PostEchoWithCode(int code)
+        public async Task<IActionResult> PostEchoWithCodeAsync(int code)
         {
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
 
             string response = body;
 

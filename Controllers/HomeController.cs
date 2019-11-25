@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,16 @@ namespace WebhookCatcher.Controllers
 {
     public class HomeController : ControllerBase
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IHostEnvironment _hostingEnvironment;
 
-        public HomeController(IHostingEnvironment hostingEnvironment)
+        public HomeController(IHostEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
         }
 
 
         public string Index()
-        {
-            //string webRootPath = _hostingEnvironment.WebRootPath;
+        {            
             string contentRootPath = _hostingEnvironment.ContentRootPath;
 
             return contentRootPath;

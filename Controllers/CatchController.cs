@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
@@ -18,7 +19,7 @@ namespace WebhookCatcher.Controllers
 
 
         [HttpPost("{code}")]
-        public IActionResult PostToCode(int code)
+        public async Task<IActionResult> PostToCodeAsync(int code)
         {
             try
             {
@@ -29,7 +30,7 @@ namespace WebhookCatcher.Controllers
                 csv += JsonConvert.SerializeObject(headerDictionary, Formatting.Indented) + "," + Environment.NewLine;
                 
                 StreamReader reader = new StreamReader(Request.Body);
-                string body = reader.ReadToEnd();
+                string body = await reader.ReadToEndAsync();
 
                 body = "\"Body\" : " + body + Environment.NewLine + "}";
 
@@ -48,7 +49,7 @@ namespace WebhookCatcher.Controllers
 
 
         [HttpGet("{code}")]
-        public IActionResult GetCode(int code)
+        public async Task<IActionResult> GetCodeAsync(int code)
         {
             var headerDictionary = new Dictionary<string, StringValues>(Request.Headers);
 
@@ -57,7 +58,7 @@ namespace WebhookCatcher.Controllers
             csv += JsonConvert.SerializeObject(headerDictionary, Formatting.Indented) + "," + Environment.NewLine;
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
 
             body = "\"Body\" : " + body + Environment.NewLine + "}";
 

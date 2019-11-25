@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
@@ -18,18 +19,16 @@ namespace WebhookCatcher.Controllers
         RequestToFile request = new RequestToFile();
         HookModel hookModel = new HookModel();
         HttpClient client = new HttpClient();
-        //private string WebhookUrl = "";
-        //private string WebhookBody = "";
 
 
 
 
         [HttpPost]
-        public IActionResult PostHook()
+        public async Task<IActionResult> PostHookAsync()
         {
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
             
             hookModel = hookModel.Deserialize(body);
             client.PostRequest(hookModel.WebhookUrl, hookModel.WebhookBody);
@@ -41,11 +40,11 @@ namespace WebhookCatcher.Controllers
         
         
         [HttpPost("{code}")]
-        public IActionResult PostHookWithCode(int code)
+        public async Task<IActionResult> PostHookWithCodeAsync(int code)
         {
             
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
 
             hookModel = hookModel.Deserialize(body);
             client.PostRequest(hookModel.WebhookUrl, hookModel.WebhookBody);

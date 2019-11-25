@@ -14,7 +14,7 @@ namespace WebhookCatcher.Controllers
     public class FilesController : ControllerBase
     {
         [HttpGet("{code}")]
-        public IActionResult GetFilesWithCode(int code)
+        public async Task<IActionResult> GetFilesWithCodeAsync(int code)
         {
             var headerDictionary = new Dictionary<string, StringValues>(Request.Headers);
 
@@ -23,7 +23,7 @@ namespace WebhookCatcher.Controllers
             csv += JsonConvert.SerializeObject(headerDictionary, Formatting.Indented) + "," + Environment.NewLine;
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
 
             body = "\"Body\" : " + body + Environment.NewLine + "}";
 
@@ -35,7 +35,7 @@ namespace WebhookCatcher.Controllers
 
 
         [HttpGet]
-        public IActionResult GetAllFiles()
+        public async Task<IActionResult> GetAllFilesAsync()
         {
             var headerDictionary = new Dictionary<string, StringValues>(Request.Headers);
 
@@ -44,7 +44,7 @@ namespace WebhookCatcher.Controllers
             csv += JsonConvert.SerializeObject(headerDictionary, Formatting.Indented) + "," + Environment.NewLine;
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
 
             body = "\"Body\" : " + body + Environment.NewLine + "}";
 

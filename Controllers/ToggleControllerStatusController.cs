@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using WebhookCatcher.Utils;
 
@@ -16,7 +13,7 @@ namespace WebhookCatcher.Controllers
         ControllerStatus controllerStatus = new ControllerStatus();
 
         [HttpPost("{id}")]
-        public IActionResult PostToToggleControllerAvailability(string id)
+        public async Task<IActionResult> PostToToggleControllerAvailabilityAsync(string id)
         {
             int code = 200;
 
@@ -33,7 +30,7 @@ namespace WebhookCatcher.Controllers
             }
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
 
             request.ToFile(body, id);            
 

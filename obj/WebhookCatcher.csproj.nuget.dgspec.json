@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj": {}
+    "D:\\Everything\\Development\\Code\\WebhookCatcher\\WebhookCatcher.csproj": {}
   },
   "projects": {
-    "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj": {
+    "D:\\Everything\\Development\\Code\\WebhookCatcher\\WebhookCatcher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj",
+        "projectUniqueName": "D:\\Everything\\Development\\Code\\WebhookCatcher\\WebhookCatcher.csproj",
         "projectName": "WebhookCatcher",
-        "projectPath": "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj",
+        "projectPath": "D:\\Everything\\Development\\Code\\WebhookCatcher\\WebhookCatcher.csproj",
         "packagesPath": "C:\\Users\\Slavko Ilic\\.nuget\\packages\\",
-        "outputPath": "D:\\Everything\\Development\\Code\\WebHookCatcher\\obj\\",
+        "outputPath": "D:\\Everything\\Development\\Code\\WebhookCatcher\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -21,7 +21,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.2"
+          "netcoreapp3.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -29,7 +29,7 @@
           "https://pkgs.dev.azure.com/Zero21/_packaging/PaymentPass/nuget/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.2": {
+          "netcoreapp3.0": {
             "projectReferences": {}
           }
         },
@@ -40,28 +40,15 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.2": {
+        "netcoreapp3.0": {
           "dependencies": {
-            "Microsoft.AspNetCore.App": {
-              "suppressParent": "All",
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
+              "version": "[3.0.0, )"
             },
-            "Microsoft.AspNetCore.Razor.Design": {
-              "suppressParent": "All",
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.2.0, )",
-              "autoReferenced": true
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[12.0.2, )"
+              "version": "[3.0.0, )"
             },
             "RestSharp": {
               "target": "Package",
@@ -78,6 +65,14 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }

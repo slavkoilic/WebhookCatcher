@@ -18,12 +18,12 @@ namespace WebhookCatcher.Controllers
         private int RandomPercentageOfFailure => _random.Next(100);
 
         [HttpPost("{id}")]
-        public IActionResult PostToRandomControllerAvailability(string id)
+        public async Task<IActionResult> PostToRandomControllerAvailabilityAsync(string id)
         {
             
 
             StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
+            string body = await reader.ReadToEndAsync();
 
             request.ToFile(body, id);
 

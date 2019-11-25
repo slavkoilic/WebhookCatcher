@@ -1,0 +1,43 @@
+﻿@page
+@model WebhookCatcher.Pages.ControllersModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Controllers</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
+
+</head>
+
+<body>
+    <header>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" asp-page="/Index">Logs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" asp-page="/Controllers">Controllers</a>
+            </li>
+        </ul>
+    </header>
+    <div>
+        <div>
+            <div class="server-time">
+                <h3>Last refresh: @Model.Time (Server Time) <button type="submit" onClick="window.location.reload();">Refresh Page</button> </h3>
+            </div>
+        </div>
+        <div>
+            <div class="logs-number">
+                <h3>Current number of controller files: @Model.ControllersNumber <form method="post"><button asp-page-handler="ArchiveControllers">Archive Controllers</button></form></h3>
+            </div>
+        </div>
+        <div>
+            @Html.Raw(@Model.Controllers)
+        </div>
+</body>
+</html>
+

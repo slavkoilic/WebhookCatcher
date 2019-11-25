@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using WebhookCatcher.Controllers;
 
 namespace WebhookCatcher.Utils
 {
@@ -58,11 +57,15 @@ namespace WebhookCatcher.Utils
         }
 
         public void ArchiveLogs()
-        {
-            DirectoryInfo LogsDir = new DirectoryInfo(pathToLogsDir);
-            foreach (var file in LogsDir.GetFiles())
+        {            
+            foreach (var file in Files())
             {
-                file.MoveTo($@"{pathToArchiveDir}\{file.Name}");
+                string pathToArchivedFile = Path.Combine(pathToArchiveDir, file.Name);
+                if (File.Exists(pathToArchivedFile))
+                {
+                    File.Delete(pathToArchivedFile);
+                }
+                file.MoveTo(pathToArchivedFile);
             }
 
         }

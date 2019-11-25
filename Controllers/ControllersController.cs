@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 using System.IO;
-using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WebhookCatcher.Models;
 using WebhookCatcher.Utils;
@@ -13,20 +12,93 @@ namespace WebhookCatcher.Controllers
     [ApiController]
     public class ControllersController : ControllerBase
     {
-        ControllersUtils request = new ControllersUtils();
-        CreateControllerModel controller = new CreateControllerModel();        
+        ControllersUtils request;
+        CreateControllerModel controller;
+        RequestToFile log;
 
         [HttpPost("create")]
-        public IActionResult PostToRandomControllerAvailability()
-        {            
-            StreamReader reader = new StreamReader(Request.Body);
-            string body = reader.ReadToEnd();
-            controller = controller.Deserialize(body);
+        public async Task<IActionResult> PostToCreateNewControllerAsync()
+        {
+            request = new ControllersUtils();
+            controller = new CreateControllerModel();
+            log = new RequestToFile();
+
+            using (StreamReader reader = new StreamReader(Request.Body))
+            {
+                string body = await reader.ReadToEndAsync();
+                log.ToFile(body, "create");
+
+                controller = controller.Deserialize(body);
+                request.CreateControllerFile(controller.ControllerName.ToLower(), body);
+            }
+
+            return StatusCode(201);
+
+        }
 
 
-            request.CreateControllerFile(controller.ControllerName, controller.ResponseBody);
+        [HttpPost("{controllerId}/{**catchAll}")]
+        public async Task<IActionResult> PostToGetResponseFromControllerAsync(string controllerId, string catchAll)
+        {
+            request = new ControllersUtils();
+            controller = new CreateControllerModel();
+            log = new RequestToFile();
 
-            return StatusCode(controller.StatusCode);
+            using (StreamReader reader = new StreamReader(Request.Body))
+            {
+                string body = await reader.ReadToEndAsync();
+                log.ToFile(body, controllerId);
+            }
+
+
+            string jsonString = Regex.Unescape(request.ReadControllerFile(controllerId.ToLower()));
+            controller = controller.Deserialize(jsonString);
+
+            return StatusCode(controller.StatusCode, controller.ResponseBody);
+
+        }
+
+
+        [HttpPut("{controllerId}/{**catchAll}")]
+        public async Task<IActionResult> PutToGetResponseFromControllerAsync(string controllerId, string catchAll)
+        {
+            request = new ControllersUtils();
+            controller = new CreateControllerModel();
+            log = new RequestToFile();
+
+            using (StreamReader reader = new StreamReader(Request.Body))
+            {
+                string body = await reader.ReadToEndAsync();
+                log.ToFile(body, controllerId);
+            }
+
+
+            string jsonString = request.ReadControllerFile(controllerId.ToLower());
+            controller = controller.Deserialize(jsonString);
+
+
+            return StatusCode(controller.StatusCode, controller.ResponseBody);
+
+        }
+
+
+        [HttpGet("{controllerId}/{**catchAll}")]
+        public async Task<IActionResult> GetResponseFromControllerAsync(string controllerId)
+        {
+            request = new ControllersUtils();
+            log = new RequestToFile();
+            controller = new CreateControllerModel();
+
+            using (StreamReader reader = new StreamReader(Request.Body))
+            {
+                string body = await reader.ReadToEndAsync();
+                log.ToFile(body, controllerId);
+            }
+
+            string jsonString = request.ReadControllerFile(controllerId.ToLower());            
+            controller = controller.Deserialize(jsonString);
+            
+            return StatusCode(controller.StatusCode, controller.ResponseBody);
 
         }
 
