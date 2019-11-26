@@ -1,0 +1,59 @@
+﻿@page
+@model WebhookCatcher.Pages.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webhook Catcher</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon">
+
+</head>
+
+<body>
+    <header>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" asp-page="/Index">Logs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-page="/Controllers">Controllers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" asp-page="/Documentation">Documentation</a>
+            </li>
+        </ul>
+    </header>
+        <div>
+            <div>
+                <h2>Documentation</h2>
+            </div>
+            <div>
+                <div>
+                    <h3>Catch/Log Endpoint</h3>
+                    <p>Basic functionality is to catch webhook notifications</p>
+                </div>
+                <div>
+                    <h3>Controllers Endpoint</h3>
+                </div>
+                <div>
+                    <h3>Echo Endpoint</h3>
+                </div>
+                <div>
+                    <h3>Hook/Proxy Endpoint</h3>
+                </div>
+                <div>
+                    <h3>RandomControllerStatus Endpoint</h3>
+                </div>
+                <div>
+                    <h3>ToggleControllerStatus Endpoint</h3>
+                </div>
+            </div>
+        </div>
+        
+</body>
+</html>
+
