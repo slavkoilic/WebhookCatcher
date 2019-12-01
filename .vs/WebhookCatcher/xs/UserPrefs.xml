@@ -10,7 +10,13 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node />
+          <Node name="WebhookCatcher" expanded="True">
+            <Node name="WebhookCatcher" expanded="True">
+              <Node name="Pages" expanded="True">
+                <Node name="Documentation.cshtml" selected="True" />
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
