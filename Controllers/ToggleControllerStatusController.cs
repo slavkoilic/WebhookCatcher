@@ -12,7 +12,8 @@ namespace WebhookCatcher.Controllers
         RequestToFile request = new RequestToFile();
         ControllerStatus controllerStatus = new ControllerStatus();
 
-        [HttpPost("{id}")]
+        [AcceptVerbs("GET", "POST", "PUT", "PATCH", "DELETE")]
+        [Route("{id}")]
         public async Task<IActionResult> PostToToggleControllerAvailabilityAsync(string id)
         {
             int code = 200;

@@ -15,10 +15,10 @@ namespace WebhookCatcher.Controllers
     public class EchoController : ControllerBase
     {
 
-        RequestToFile request = new RequestToFile();        
+        RequestToFile request = new RequestToFile();
 
 
-        [HttpGet]
+        [AcceptVerbs("GET", "POST", "PUT", "PATCH", "DELETE")]
         public async Task<IActionResult> GetEchoAsync()
         {          
 
@@ -31,21 +31,9 @@ namespace WebhookCatcher.Controllers
 
         }
 
-        [HttpPost]
-        public async Task<IActionResult> PostEchoAsync()
-        {
-
-            StreamReader reader = new StreamReader(Request.Body);
-            string body = await reader.ReadToEndAsync();
-
-            string response = body;
-
-            return StatusCode(200, response);
-
-        }
-
-
-        [HttpGet("{code}")]
+               
+        [AcceptVerbs("GET", "POST", "PUT", "PATCH", "DELETE")]
+        [Route("{code}")]
         public async Task<IActionResult> GetEchoWithCodeAsync(int code)
         {
 
@@ -57,20 +45,7 @@ namespace WebhookCatcher.Controllers
             return StatusCode(code, response);
 
         }
-
-        [HttpPost("{code}")]
-        public async Task<IActionResult> PostEchoWithCodeAsync(int code)
-        {
-
-            StreamReader reader = new StreamReader(Request.Body);
-            string body = await reader.ReadToEndAsync();
-
-            string response = body;
-
-            return StatusCode(code, response);
-
-        }
-
+        
 
     }
 }

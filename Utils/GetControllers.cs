@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -58,16 +59,19 @@ namespace WebhookCatcher.Utils
 
         public void ArchiveControllers()
         {
-            
-            foreach (var file in Files())
+            string timestamp= DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            foreach (FileInfo file in Files())
             {
-                string pathToArchivedFile = Path.Combine(pathToArchiveDir, file.Name);
-                if (File.Exists(pathToArchivedFile)){
-                    File.Delete(pathToArchivedFile);
+                string pathToArchivedFile = Path.Combine(pathToArchiveDir, "archived" + timestamp + "_"+file.Name);
+                try
+                {
+                    file.MoveTo(pathToArchivedFile, true);
                 }
+                catch
+                {
 
-                //file.MoveTo($@"{pathToArchiveDir}\{file.Name}");
-                file.MoveTo(pathToArchivedFile);
+                }
+                
             }
 
         }

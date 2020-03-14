@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using WebhookCatcher.Models;
 using WebhookCatcher.Utils;
 
@@ -14,6 +16,7 @@ namespace WebhookCatcher.Controllers
     {
         ControllersUtils request;
         CreateControllerModel controller;
+        CreateControllerWithStringModel strController;
         RequestToFile log;
 
         [HttpPost("create")]
@@ -21,6 +24,7 @@ namespace WebhookCatcher.Controllers
         {
             request = new ControllersUtils();
             controller = new CreateControllerModel();
+            strController = new CreateControllerWithStringModel();
             log = new RequestToFile();
 
             using (StreamReader reader = new StreamReader(Request.Body))
@@ -28,77 +32,70 @@ namespace WebhookCatcher.Controllers
                 string body = await reader.ReadToEndAsync();
                 log.ToFile(body, "create");
 
-                controller = controller.Deserialize(body);
-                request.CreateControllerFile(controller.ControllerName.ToLower(), body);
+                try {
+                    controller = controller.Deserialize(body);
+                    request.CreateControllerFile(controller.ControllerName.ToLower(), body);
+                }
+                catch
+                {
+                    strController = strController.Deserialize(body);
+                    request.CreateControllerFile(strController.ControllerName.ToLower(), body);
+                }
+
+                
             }
 
             return StatusCode(201);
 
         }
 
-
-        [HttpPost("{controllerId}/{**catchAll}")]
+        [AcceptVerbs("GET","POST","PUT")]
+        [Route("{controllerId}/{**catchAll}")]
         public async Task<IActionResult> PostToGetResponseFromControllerAsync(string controllerId, string catchAll)
         {
             request = new ControllersUtils();
             controller = new CreateControllerModel();
+            strController = new CreateControllerWithStringModel();
             log = new RequestToFile();
 
             using (StreamReader reader = new StreamReader(Request.Body))
             {
+                
                 string body = await reader.ReadToEndAsync();
+                body = Request.Path.ToString() + Environment.NewLine + body;
                 log.ToFile(body, controllerId);
             }
 
+            string jsonString = "";
 
-            string jsonString = Regex.Unescape(request.ReadControllerFile(controllerId.ToLower()));
-            controller = controller.Deserialize(jsonString);
-
-            return StatusCode(controller.StatusCode, controller.ResponseBody);
-
-        }
-
-
-        [HttpPut("{controllerId}/{**catchAll}")]
-        public async Task<IActionResult> PutToGetResponseFromControllerAsync(string controllerId, string catchAll)
-        {
-            request = new ControllersUtils();
-            controller = new CreateControllerModel();
-            log = new RequestToFile();
-
-            using (StreamReader reader = new StreamReader(Request.Body))
+            //if ResponseBody is jsonObject
+            try
             {
-                string body = await reader.ReadToEndAsync();
-                log.ToFile(body, controllerId);
+                jsonString = Regex.Unescape(request.ReadControllerFile(controllerId.ToLower()));
+                controller = controller.Deserialize(jsonString);
+                return StatusCode(controller.StatusCode, controller.ResponseBody);
             }
-
-
-            string jsonString = request.ReadControllerFile(controllerId.ToLower());
-            controller = controller.Deserialize(jsonString);
-
-
-            return StatusCode(controller.StatusCode, controller.ResponseBody);
-
-        }
-
-
-        [HttpGet("{controllerId}/{**catchAll}")]
-        public async Task<IActionResult> GetResponseFromControllerAsync(string controllerId)
-        {
-            request = new ControllersUtils();
-            log = new RequestToFile();
-            controller = new CreateControllerModel();
-
-            using (StreamReader reader = new StreamReader(Request.Body))
+            //if ResponseBody is string
+            catch 
             {
-                string body = await reader.ReadToEndAsync();
-                log.ToFile(body, controllerId);
-            }
+                
+                jsonString = request.ReadControllerFile(controllerId.ToLower());
+                strController = strController.Deserialize(jsonString);
+                //if ResponseBody string is XML
+                try
+                {
+                    var doc = XDocument.Parse(strController.ResponseBody);
+                    return StatusCode(strController.StatusCode, doc);
 
-            string jsonString = request.ReadControllerFile(controllerId.ToLower());            
-            controller = controller.Deserialize(jsonString);
+                }
+                //if ResponseBody string is just a string
+                catch
+                {
+                    return StatusCode(strController.StatusCode, strController.ResponseBody);
+                }
+
+            }           
             
-            return StatusCode(controller.StatusCode, controller.ResponseBody);
 
         }
 

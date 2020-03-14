@@ -1,0 +1,17 @@
+{
+  "StatusCode": 200,
+  "ControllerName": "paysafe",
+  "ResponseBody": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns1=\"urn:pscservice\">
+    <soap:Body>
+        <ns1:createDispositionResponse>
+            <ns1:createDispositionReturn>
+                <ns1:mtid>trn_e22474ccb51841</ns1:mtid>
+                <ns1:subId>1</ns1:subId>
+                <ns1:mid>1000013353</ns1:mid>
+                <ns1:resultCode>0</ns1:resultCode>
+                <ns1:errorCode>0</ns1:errorCode>
+            </ns1:createDispositionReturn>
+        </ns1:createDispositionResponse>
+    </soap:Body>
+</soap:Envelope>"
+}

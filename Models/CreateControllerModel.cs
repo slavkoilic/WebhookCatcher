@@ -12,5 +12,15 @@ namespace WebhookCatcher.Models
         public CreateControllerModel Deserialize(string content) => JsonConvert.DeserializeObject<CreateControllerModel>(content);
     }
 
-    
+
+    public class CreateControllerWithStringModel
+    {
+        public int StatusCode { get; set; }
+        public string ControllerName { get; set; }
+        public string ResponseBody { get; set; }
+
+        public CreateControllerWithStringModel Deserialize(string content) => JsonConvert.DeserializeObject<CreateControllerWithStringModel>(content);
+    }
+
+
 }

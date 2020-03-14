@@ -7,14 +7,14 @@ namespace WebhookCatcher.Utils
     {
         public void ToFile(string requestContent, int responseCode)
         {
-            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmssfff");
+            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmssffff");
 
             File.WriteAllText("./wwwroot/Logs/" + timestamp+"_"+ responseCode+".txt", requestContent);
         }
 
         public void ToFile(string requestContent, string code)
         {
-            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmssfff");
+            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmssffff");
 
             File.WriteAllText("./wwwroot/Logs/" + timestamp + "_" + code + ".txt", requestContent);
         }

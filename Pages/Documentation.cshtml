@@ -34,7 +34,14 @@
             <div>
                 <div>
                     <h3>Catch/Log Endpoint</h3>
-                    <p>Basic functionality is to catch webhook notifications</p>
+                    <p>Basic functionality is to catch webhook notifications. Use this endpoint if you want to log the Request headers and Request body. Accepted methods: GET, POST</p>
+                    <p>{{BaseUrl}}/api/catch</p>
+                    <p>In addition to basic functionality you can define which StatusCode is returned with the Response when Request is received on endpoint. Accepted methods: GET, POST</p>
+                    <p>
+                        {{BaseUrl}}/api/catch/200 <br />
+                        {{BaseUrl}}/api/catch/404 <br />
+                        {{BaseUrl}}/api/catch/{{statuscode}}
+                    </p>
                 </div>
                 <div>
                     <h3>Controllers Endpoint</h3>

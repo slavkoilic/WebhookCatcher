@@ -17,8 +17,9 @@ namespace WebhookCatcher.Controllers
 
         RequestToFile request = new RequestToFile();
 
-
-        [HttpPost("{code}")]
+                
+        [AcceptVerbs("GET", "POST", "PUT","PATCH","DELETE")]
+        [Route("{code}")]
         public async Task<IActionResult> PostToCodeAsync(int code)
         {
             try
@@ -47,7 +48,7 @@ namespace WebhookCatcher.Controllers
             }
         }
 
-
+        /*
         [HttpGet("{code}")]
         public async Task<IActionResult> GetCodeAsync(int code)
         {
@@ -67,7 +68,7 @@ namespace WebhookCatcher.Controllers
             return StatusCode(code, response);
 
         }
-
+        */
 
     }
 }

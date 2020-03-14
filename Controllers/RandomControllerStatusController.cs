@@ -17,7 +17,9 @@ namespace WebhookCatcher.Controllers
         private readonly Random _random = new Random();
         private int RandomPercentageOfFailure => _random.Next(100);
 
-        [HttpPost("{id}")]
+        
+        [AcceptVerbs("GET", "POST", "PUT", "PATCH", "DELETE")]
+        [Route("{id}")]
         public async Task<IActionResult> PostToRandomControllerAvailabilityAsync(string id)
         {
             

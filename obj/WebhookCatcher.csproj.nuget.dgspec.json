@@ -1,29 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/WebhookCatcher.csproj": {}
+    "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj": {}
   },
   "projects": {
-    "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/WebhookCatcher.csproj": {
+    "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/WebhookCatcher.csproj",
+        "projectUniqueName": "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj",
         "projectName": "WebhookCatcher",
-        "projectPath": "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/WebhookCatcher.csproj",
-        "packagesPath": "/home/slavko/.nuget/packages/",
-        "outputPath": "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/obj/",
+        "projectPath": "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj",
+        "packagesPath": "C:\\Users\\Slavko Ilic\\.nuget\\packages\\",
+        "outputPath": "D:\\Everything\\Development\\Code\\WebHookCatcher\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/home/slavko/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Slavko Ilic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/Zero21/_packaging/PaymentPass/nuget/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
@@ -47,10 +50,6 @@
               "target": "Package",
               "version": "[2.2.8, )"
             },
-            "Microsoft.NETCore.App.Ref": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.0.0, )"
@@ -70,12 +69,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.0.0, 3.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -84,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
