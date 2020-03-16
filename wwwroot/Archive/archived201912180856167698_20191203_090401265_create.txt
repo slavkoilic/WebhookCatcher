@@ -1,0 +1,19 @@
+{
+  "StatusCode": 200,
+  "ControllerName": "paysafe",
+  "ResponseBody": { "response" : 
+  {
+      "result_code": 0,
+      "bill": {
+        "bill_id": "trn_7d7329f4a98241",
+        "amount": "15.00",
+        "ccy": "EUR",
+        "status": "expired",
+        "error": 0,
+        "user": "tel:+381635555555",
+        "comment": "WebhookCatcherMockData"
+      	
+      }
+  }
+}
+}

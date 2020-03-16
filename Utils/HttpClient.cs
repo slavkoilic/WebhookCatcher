@@ -9,7 +9,7 @@ namespace WebhookCatcher.Utils
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddJsonBody(body);
-            client.ExecuteAsync(request);
+            client.ExecuteTaskAsync(request);
         }
     }
 }
