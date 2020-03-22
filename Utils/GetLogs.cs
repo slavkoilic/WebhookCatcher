@@ -41,7 +41,7 @@ namespace WebhookCatcher.Utils
 
                 sb.Append("<tr>");
                 sb.Append("<td>" + f.CreationTime.ToString("yyyyMMdd_HHmmssfff") + "</td>");
-                sb.Append("<td>"+ parts.Last() +"</td>");
+                sb.Append("<td>"+ parts[parts.Length-2] + " " + parts.Last() +"</td>");
                 sb.Append("<td><a href=\"/Logs/"+ f.Name + "\" target=\"_blank\"> ");
                 sb.Append(f.Name + "</a></td>");
                 sb.Append("</tr>");

@@ -1,32 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj": {}
+    "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/WebhookCatcher.csproj": {}
   },
   "projects": {
-    "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj": {
+    "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/WebhookCatcher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj",
+        "projectUniqueName": "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/WebhookCatcher.csproj",
         "projectName": "WebhookCatcher",
-        "projectPath": "D:\\Everything\\Development\\Code\\WebHookCatcher\\WebhookCatcher.csproj",
-        "packagesPath": "C:\\Users\\Slavko Ilic\\.nuget\\packages\\",
-        "outputPath": "D:\\Everything\\Development\\Code\\WebHookCatcher\\obj\\",
+        "projectPath": "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/WebhookCatcher.csproj",
+        "packagesPath": "/home/slavko/.nuget/packages/",
+        "outputPath": "/home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Slavko Ilic\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/slavko/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/Zero21/_packaging/PaymentPass/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
@@ -47,6 +44,7 @@
               "version": "[3.0.0, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.2.8, )"
             },
@@ -69,6 +67,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -77,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
         }
       }
     }

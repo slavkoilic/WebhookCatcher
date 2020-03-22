@@ -38,9 +38,11 @@
                     <h3>Current number of log files: @Model.LogsNumber <form method="post"><button asp-page-handler="ArchiveLogs">Archive Logs</button></form></h3>
                 </div>
             </div>
-            <div>
-                @Html.Raw(@Model.Logs)
-            </div>
+        <div>
+            @Html.Raw(@Model.Logs)
+        </div>
+    
+        </div>
 
 </body>
 </html>
