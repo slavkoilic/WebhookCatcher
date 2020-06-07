@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_WebhookCatcher.-529044443.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.1/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_WebhookCatcher.-529044443.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p=".directory" t="Include" />
+      <e p=".gitignore" t="Include" />
       <e p="Controllers" t="Include">
         <e p="CatchController.cs" t="Include" />
         <e p="ControllersController.cs" t="Include" />
@@ -54,7 +55,7 @@
       <e p="json.json" t="Include" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
-          <e p="netcoreapp3.0" t="Include">
+          <e p="netcoreapp3.1" t="Include">
             <e p="WebhookCatcher.AssemblyInfo.cs" t="Include" />
             <e p="WebhookCatcher.RazorAssemblyInfo.cs" t="Include" />
           </e>
@@ -161,6 +162,12 @@
           <e p="20200322_2021595830_200_first-second-third.txt" t="Include" />
           <e p="20200322_2103401298_200_first-second-third.txt" t="Include" />
           <e p="20200322_2104263791_200_first-second-third.php.txt" t="Include" />
+          <e p="20200323_0810375990_200_.txt" t="Include" />
+          <e p="20200323_0810434118_200_.txt" t="Include" />
+          <e p="20200323_0810514970_200_first.txt" t="Include" />
+          <e p="20200323_0810575489_200_first-second.txt" t="Include" />
+          <e p="20200323_0811124559_200_.txt" t="Include" />
+          <e p="20200323_0811517060_200_.txt" t="Include" />
         </e>
         <e p="css" t="Include">
           <e p="style.css" t="Include" />

@@ -13,7 +13,6 @@ namespace WebhookCatcher.Controllers
     public class RandomControllerStatusController : ControllerBase
     {
         RequestToFile request = new RequestToFile();
-        ControllerStatus controllerStatus = new ControllerStatus();
         private readonly Random _random = new Random();
         private int RandomPercentageOfFailure => _random.Next(100);
 

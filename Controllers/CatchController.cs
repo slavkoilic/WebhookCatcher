@@ -29,8 +29,6 @@ namespace WebhookCatcher.Controllers
                 catchAll = catchAll.Replace('/', '-');
             }
             
-            
-            
             try
             {
                 var headerDictionary = new Dictionary<string, StringValues>(Request.Headers);
@@ -67,28 +65,5 @@ namespace WebhookCatcher.Controllers
                 return StatusCode(500, e.Message);
             }
         }
-
-        /*
-        [HttpGet("{code}")]
-        public async Task<IActionResult> GetCodeAsync(int code)
-        {
-            var headerDictionary = new Dictionary<string, StringValues>(Request.Headers);
-
-            string csv = "{" + Environment.NewLine + "\"Headers\" : ";
-
-            csv += JsonConvert.SerializeObject(headerDictionary, Formatting.Indented) + "," + Environment.NewLine;
-
-            StreamReader reader = new StreamReader(Request.Body);
-            string body = await reader.ReadToEndAsync();
-
-            body = "\"Body\" : " + body + Environment.NewLine + "}";
-
-            string response = csv + body;
-
-            return StatusCode(code, response);
-
-        }
-        */
-
     }
 }
