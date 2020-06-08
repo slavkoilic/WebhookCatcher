@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebhookCatcher.Utils;
 
 namespace WebhookCatcher
 {
@@ -12,6 +13,8 @@ namespace WebhookCatcher
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            DirectoryStructure dirStructure = new DirectoryStructure();
+            dirStructure.SetUp();
             
         }
 

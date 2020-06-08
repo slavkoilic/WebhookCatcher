@@ -221,3 +221,5 @@ D:/Everything/Development/Code/WebHookCatcher/obj/Release/netcoreapp3.0/WebhookC
 /home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/obj/Release/netcoreapp3.0/staticwebassets/WebhookCatcher.StaticWebAssets.xml
 /home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/obj/Release/netcoreapp3.0/WebhookCatcher.dll
 /home/slavko/Everything/Development/Code/GitHub/WebhookCatcher/obj/Release/netcoreapp3.0/WebhookCatcher.pdb
+C:\Users\Slavko Ilic\source\repos\WebhookCatcher\obj\Release\netcoreapp3.0\WebhookCatcher.dll
+C:\Users\Slavko Ilic\source\repos\WebhookCatcher\obj\Release\netcoreapp3.0\WebhookCatcher.pdb
