@@ -20,9 +20,6 @@
     <Folder Include="wwwroot\Controllers" />
     <Folder Include="wwwroot\ControllerStatus" />
     <Folder Include="wwwroot\Logs" />
-    <Folder Include="wwwroot\Logs\" />
-    <Folder Include="wwwroot\ControllerStatus\" />
-    <Folder Include="wwwroot\Controllers\" />
   </ItemGroup>
 
   <ItemGroup>
