@@ -66,37 +66,67 @@ namespace WebhookCatcher.Controllers
                 log.ToFile(body, controllerId);
             }
 
-            string jsonString = "";
+            string responseString = "";
 
-            //if ResponseBody is jsonObject
+            
             try
             {
-                jsonString = Regex.Unescape(request.ReadControllerFile(controllerId.ToLower()));
-                controller = controller.Deserialize(jsonString);
-                return StatusCode(controller.StatusCode, controller.ResponseBody);
+                //responseString = Regex.Unescape(request.ReadControllerFile(controllerId.ToLower())); //only works with json
+                responseString = request.ReadControllerFile(controllerId.ToLower()); //only works with xml/string
+                strController = strController.Deserialize(responseString); //if json -> throws exception
+
+
+                if (strController.ResponseBody.Contains("?xml") || strController.ResponseBody.Contains("CDATA"))
+                {
+                    //responseString = request.ReadControllerFile(controllerId.ToLower());
+                    //strController = strController.Deserialize(responseString);
+                    var doc = XDocument.Parse(strController.ResponseBody);
+                    return StatusCode(strController.StatusCode, strController.ResponseBody);
+                } else
+                {
+                    responseString = Regex.Unescape(request.ReadControllerFile(controllerId.ToLower()));
+                    controller = controller.Deserialize(responseString);
+                    return StatusCode(controller.StatusCode, controller.ResponseBody);
+                }
+                
             }
             //if ResponseBody is string
             catch 
             {
                 
-                jsonString = request.ReadControllerFile(controllerId.ToLower());
-                strController = strController.Deserialize(jsonString);
-                //if ResponseBody string is XML
+                //if ResponseBody string is JSON
                 try
                 {
-                    var doc = XDocument.Parse(strController.ResponseBody);
-                    return StatusCode(strController.StatusCode, doc);
-
+                    responseString = Regex.Unescape(request.ReadControllerFile(controllerId.ToLower()));
+                    controller = controller.Deserialize(responseString);
+                    return StatusCode(controller.StatusCode, controller.ResponseBody);                   
                 }
                 //if ResponseBody string is just a string
                 catch
                 {
+                    strController = strController.Deserialize(responseString);
                     return StatusCode(strController.StatusCode, strController.ResponseBody);
                 }
+
+
 
             }           
             
 
+        }
+
+
+        public bool IsJson(string input)
+        {
+            input = input.Trim();
+            return input.StartsWith("{") && input.EndsWith("}")
+                   || input.StartsWith("[") && input.EndsWith("]");
+        }
+
+        public bool IsXml(string input)
+        {
+            input = input.Trim();
+            return input.StartsWith("\"<") && input.EndsWith(">\"");
         }
 
     }
