@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace WebhookCatcher.Controllers
     {
         [AcceptVerbs("GET", "POST", "PUT", "PATCH", "DELETE")]
         [Route("{timeout}/{**catchAll}")]
-        public async Task<IActionResult> GetEchoWithCodeAsync(int timeout)
+        public async Task<IActionResult> TimeoutAsync(string timeout)
         {
             StreamReader reader = new StreamReader(Request.Body);
             string body = await reader.ReadToEndAsync();
@@ -20,7 +21,15 @@ namespace WebhookCatcher.Controllers
             
             try
             {
-                Thread.Sleep(timeout*1000);
+                if (Int32.TryParse(timeout, out int timeoutInt))
+                {
+                    Thread.Sleep(timeoutInt*1000);
+                }
+                else
+                {
+                    Thread.Sleep(35000);
+                }
+                
 
             }
             catch
@@ -31,24 +40,6 @@ namespace WebhookCatcher.Controllers
 
             return StatusCode(200, response);
 
-        }
-        
-        
-        
-        
-        
-        [AcceptVerbs("GET", "POST", "PUT", "PATCH", "DELETE")]
-        [Route("{timeout}/{**catchAll}")]
-        public async Task<IActionResult> GetEchoWithCodeAsync(string timeout)
-        {
-            StreamReader reader = new StreamReader(Request.Body);
-            string body = await reader.ReadToEndAsync();
-
-            string response = body;
-            
-            Thread.Sleep(35000);
-            
-            return StatusCode(200, response);
         }
     }
 }
