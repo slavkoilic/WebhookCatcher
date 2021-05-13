@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebhookCatcher.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class TimeoutController : ControllerBase
     {
         [AcceptVerbs("GET", "POST", "PUT", "PATCH", "DELETE")]
@@ -23,12 +25,30 @@ namespace WebhookCatcher.Controllers
             }
             catch
             {
-                Thread.Sleep(30000);
+                Thread.Sleep(35000);
                 
             }
 
             return StatusCode(200, response);
 
+        }
+        
+        
+        
+        
+        
+        [AcceptVerbs("GET", "POST", "PUT", "PATCH", "DELETE")]
+        [Route("{timeout}/{**catchAll}")]
+        public async Task<IActionResult> GetEchoWithCodeAsync(string timeout)
+        {
+            StreamReader reader = new StreamReader(Request.Body);
+            string body = await reader.ReadToEndAsync();
+
+            string response = body;
+            
+            Thread.Sleep(35000);
+            
+            return StatusCode(200, response);
         }
     }
 }
