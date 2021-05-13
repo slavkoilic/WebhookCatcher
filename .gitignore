@@ -1,1 +1,2 @@
+#Ignore txt files (used for logs and controllers)
 *.txt

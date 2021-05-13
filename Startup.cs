@@ -25,8 +25,7 @@ namespace WebhookCatcher
         {
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllers();
-            services.AddMvc()
-                .AddNewtonsoftJson();
+            
 
         }
 

@@ -54,14 +54,16 @@ namespace WebhookCatcher.Controllers
                 body = "\"Body\" : " + body + Environment.NewLine + "}";
 
                 string response = csv + body;
+                string name = request.GetPrefix() + "_" + code;
 
-                request.ToFile(response, code + "_" + catchAll);
+                request.ToFile(response, name + "_" + catchAll);
 
                 return StatusCode(code, response);
             }
             catch (Exception e)
             {
-                request.ToFile(e.Message, code + "_" + catchAll);
+                string name = request.GetPrefix() + "_" + code;
+                request.ToFile(e.Message, name + "_" + catchAll);
                 return StatusCode(500, e.Message);
             }
         }

@@ -30,7 +30,8 @@ namespace WebhookCatcher.Controllers
             using (StreamReader reader = new StreamReader(Request.Body))
             {
                 string body = await reader.ReadToEndAsync();
-                log.ToFile(body, "create");
+                string name = log.GetPrefix() + "_create";
+                log.ToFile(body, name);
 
                 try {
                     controller = controller.Deserialize(body);
@@ -63,7 +64,8 @@ namespace WebhookCatcher.Controllers
                 
                 string body = await reader.ReadToEndAsync();
                 body = Request.Path.ToString() + Environment.NewLine + body;
-                log.ToFile(body, controllerId);
+                string name = log.GetPrefix() + "_" + controllerId;
+                log.ToFile(body, name);
             }
 
             string responseString = "";

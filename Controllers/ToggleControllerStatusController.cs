@@ -32,8 +32,9 @@ namespace WebhookCatcher.Controllers
 
             StreamReader reader = new StreamReader(Request.Body);
             string body = await reader.ReadToEndAsync();
+            string name = request.GetPrefix() + "_" + id;
 
-            request.ToFile(body, id);            
+            request.ToFile(body, name);            
 
             return StatusCode(code);
 

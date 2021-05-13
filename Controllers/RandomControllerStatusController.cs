@@ -26,7 +26,9 @@ namespace WebhookCatcher.Controllers
             StreamReader reader = new StreamReader(Request.Body);
             string body = await reader.ReadToEndAsync();
 
-            request.ToFile(body, id);
+            string name = request.GetPrefix() + "_" + id;
+
+            request.ToFile(body, name);
 
             return RandomPercentageOfFailure <= 40
                 ? StatusCode(500)
